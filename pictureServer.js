@@ -140,7 +140,7 @@ io.on('connect', function(socket) {
       if (!err) console.log('resized');
     });
 
-    io.emit('newPicture',('/public'+imageName+'.png'));
+    io.emit('newPicture',(imageName+'.jpg'));
 
 
     // let options = {
