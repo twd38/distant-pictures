@@ -95,7 +95,7 @@ parser.on('data', function(data) {
   var imageName = new Date().toString().replace(/[&\/\\#,+()$~%.'":*?<>{}\s-]/g, '');
   console.log('making a making a picture at'+ imageName);
   NodeWebcam.capture('public/'+imageName, opts, function( err, data ) {
-  io.emit('newPicture',(imageName+'.jpg')); ///Lastly, the new name is send to the client web browser.
+  io.emit('newPicture',(imageName+'.png')); ///Lastly, the new name is send to the client web browser.
   /// The browser will take this new name and load the picture from the public folder.
   });
 
