@@ -168,8 +168,13 @@ io.on('connect', function(socket) {
     caption.path(originalFile, {
       caption: 'Meme it.',
       outputFile: saveToFile},
-      fuction(err,filename){
-        io.emit('newPicture',imageName+'_resized.jpg');
+      fuction(err){
+        if (!err) {
+              console.log('memed');
+              io.emit('newPicture',imageName+'_resized.jpg');
+            } else {
+              console.log(err)
+            }
       });
 
 
