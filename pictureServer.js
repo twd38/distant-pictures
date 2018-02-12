@@ -148,15 +148,16 @@ io.on('connect', function(socket) {
 
 
   });
-  gm('/public/'+imageName)
+  gm('public/'+imageName)
   .resize(100, 100)
   .noProfile()
   .write('/public/'+imageName+'2.jpg', function (err) {
     if (!err) {
       console.log('resized')
     };
-    io.emit('newPicture',('/public/'+imageName+'2.jpg'));
+    io.emit('newPicture',(imageName+'2.jpg'));
   });
+  io.emit('newPicture',(imageName+'2.jpg'));
 
   });
   // if you get the 'disconnect' message, say the user disconnected
