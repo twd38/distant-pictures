@@ -25,11 +25,11 @@ function ledOFF() {
 }
 
 //-- Addition: Forward the `Take a picture` button-press to the webserver.
-function takePicture(){
+function takePicture() {
   socket.emit('takePicture');
 }
 
-function memeIt(){
+function memeIt() {
   socket.emit('memeIt');
 }
 
