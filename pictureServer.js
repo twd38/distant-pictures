@@ -155,7 +155,7 @@ io.on('connect', function(socket) {
   socket.on('memeIt', function(){
     console.log('meme test');
 
-    gm(path.resove('./public/'+imageName+'.jpg'))
+    gm(path.resolve('./public/'+imageName+'.jpg'))
     .resize(100, 100)
     .write('./public/'+imageName+'_resized.jpg', function (err) {
       if (!err) console.log('resized');
