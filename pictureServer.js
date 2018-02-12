@@ -121,12 +121,34 @@ io.on('connect', function(socket) {
     /// This way we can use it as the filename.
     var imageName = new Date().toString().replace(/[&\/\\#,+()$~%.'":*?<>{}\s-]/g, '');
 
+    let memeMaker = require('meme-maker')
+
+    let options = {
+      image: 'public/'+imageName+'.jpg',         // Required
+      outfile: 'public/'+imageName+'-meme.png',  // Required
+      topText: 'TODAY IM',            // Required
+      bottomText: 'AN ASS',           // Optional
+      font: '/path/to/font.ttf',      // Optional
+      fontSize: 50,                   // Optional
+      fontFill: '#FFF',               // Optional
+      textPos: 'center',              // Optional
+      strokeColor: '#000',            // Optional
+      strokeWeight: 2                 // Optional
+    }
+
     console.log('making a making a picture at'+ imageName); // Second, the name is logged to the console.
 
     //Third, the picture is  taken and saved to the `public/`` folder
     NodeWebcam.capture('public/'+imageName, opts, function( err, data ) {
     io.emit('newPicture',(imageName+'.jpg')); ///Lastly, the new name is send to the client web browser.
     /// The browser will take this new name and load the picture from the public folder.
+
+    memeMaker(options, function(err) {
+      if(e) throw new Error(err)
+      console.log('Image saved: ' + options.outfile)
+    });
+
+
   });
 
   });
@@ -138,22 +160,3 @@ io.on('connect', function(socket) {
 
 
 //------------------------------Meme it up------------------------------------//
-let memeMaker = require('meme-maker')
-
-let options = {
-  image: 'public/'+imageName+'.jpg',         // Required
-  outfile: 'public/'+imageName+'-meme.png',  // Required
-  topText: 'TODAY IM',            // Required
-  bottomText: 'AN ASS',           // Optional
-  font: '/path/to/font.ttf',      // Optional
-  fontSize: 50,                   // Optional
-  fontFill: '#FFF',               // Optional
-  textPos: 'center',              // Optional
-  strokeColor: '#000',            // Optional
-  strokeWeight: 2                 // Optional
-}
-
-memeMaker(options, function(err) {
-  if(e) throw new Error(err)
-  console.log('Image saved: ' + options.outfile)
-});
