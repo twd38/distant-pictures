@@ -152,6 +152,7 @@ io.on('connect', function(socket) {
     });
 
 socket.on('memeIt', function(){
+  console.log('meme test');
   gm('/public/'+imageName+'.jpg')
   .resize(100, 100)
   .noProfile()
