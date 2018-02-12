@@ -166,12 +166,13 @@ io.on('connect', function(socket) {
       .write(saveToFile, function (err) {
         if (!err) {
           console.log('resized');
+          io.emit('newPicture',imageName+'_resized.jpg');
         } else {
           console.log(err)
         }
       });
 
-    io.emit('newPicture',saveToFile);
+
   });
 
   // if you get the 'disconnect' message, say the user disconnected
