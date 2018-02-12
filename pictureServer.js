@@ -170,7 +170,7 @@ io.on('connect', function(socket) {
       outputFile: saveToFile},
       function(err, filename){
         if (!err) {
-              console.log('memed'));
+              console.log('memed');
               io.emit('newPicture',imageName+'_resized.jpg');
             } else {
               console.log(err)
