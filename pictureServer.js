@@ -30,7 +30,7 @@ var fs = require('fs')
 let memeMaker = require('meme-maker');
 var imageName = '';
 var path = require('path');
-var caption = require('caption')
+var caption = require('caption');
 
 //---------------------- WEBAPP SERVER SETUP ---------------------------------//
 // use express to create the simple webapp
@@ -145,7 +145,7 @@ io.on('connect', function(socket) {
 
     });
 
-  socket.on('memeIt', function(){
+  socket.on('memeIt', function(memeCaption){
     console.log('meme test');
 
     originalFile = path.resolve('./public/'+imageName+'.jpg')
@@ -170,7 +170,7 @@ io.on('connect', function(socket) {
       outputFile: saveToFile},
       function(err, filename){
         if (!err) {
-              console.log('memed');
+              console.log(memeIt(memeCaption));
               io.emit('newPicture',imageName+'_resized.jpg');
             } else {
               console.log(err)

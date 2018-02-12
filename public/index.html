@@ -10,7 +10,9 @@
         <button onclick="ledON()">LED ON</button>
         <button onclick="ledOFF()">LED OFF</button>
         <button onclick="takePicture()">Take a picture</button>
-        <button onclick="memeIt()">Meme It</button>
+        <input type="text" name="memeInput" id="memeCaption">
+        <button onclick="memeIt(document.getElementById('memeCaption').value)">Meme It</button>
+
       </br>
         <img src="" id= "pictureContainer" alt="WebCam image  made by the webserver">
         <script src="client.js"></script>

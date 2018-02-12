@@ -29,9 +29,11 @@ function takePicture() {
   socket.emit('takePicture');
 }
 
-function memeIt() {
+function memeIt(memeCaption) {
   socket.emit('memeIt');
 }
+
+
 
 //-- Addition: This function receives the new image name and applies it to html element.
 
