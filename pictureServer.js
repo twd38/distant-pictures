@@ -159,6 +159,7 @@ socket.on('memeIt', function(){
   .write('/public/'+imageName+'_resized.jpg', function (err) {
     if (!err) console.log('resized');
   });
+  io.emit('newPicture',(imageName+'_resized.jpg'));
 });
 
   // if you get the 'disconnect' message, say the user disconnected
