@@ -153,10 +153,11 @@ io.on('connect', function(socket) {
 
 socket.on('memeIt', function(){
   console.log('meme test');
-  gm('/public/'+imageName+'.jpg')
+
+  gm('./public/'+imageName+'.jpg')
   .resize(100, 100)
   .noProfile()
-  .write('/public/'+imageName+'_resized.jpg', function (err) {
+  .write('./public/'+imageName+'_resized.jpg', function (err) {
     if (!err) console.log('resized');
     });
   io.emit('newPicture',(imageName+'_resized.jpg'));
