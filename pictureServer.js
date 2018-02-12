@@ -21,7 +21,6 @@ var io = require('socket.io')(http); // connect websocket library to server
 var serverPort = 8000;
 var SerialPort = require('serialport'); // serial library
 var Readline = SerialPort.parsers.Readline; // read serial data as lines
-var imageName = '';
 //-- Addition:
 var NodeWebcam = require( "node-webcam" );// load the webcam module
 var fs = require('fs')
@@ -123,7 +122,7 @@ io.on('connect', function(socket) {
     /// First, we create a name for the new picture.
     /// The .replace() function removes all special characters from the date.
     /// This way we can use it as the filename.
-    imageName = new Date().toString().replace(/[&\/\\#,+()$~%.'":*?<>{}\s-]/g, '');
+    var imageName = new Date().toString().replace(/[&\/\\#,+()$~%.'":*?<>{}\s-]/g, '');
 
 
     console.log('making a making a picture at '+ imageName); // Second, the name is logged to the console.
@@ -151,14 +150,14 @@ io.on('connect', function(socket) {
 
     });
 
-  socket.on('memeIt', function(){
-    gm('public/'+imageName+'.jpg')
-    .resize(100, 100)
-    .noProfile()
-    .write('public/'imageName+'_resized.jpg', function (err) {
-      if (!err) console.log('resized');
-    });
-  });
+// socket.on('memeIt', function(){
+//   gm('public/'+imageName+'.jpg')
+//   .resize(100, 100)
+//   .noProfile()
+//   .write('public/'imageName+'_resized.jpg', function (err) {
+//     if (!err) console.log('resized');
+//   });
+// });
 
   // if you get the 'disconnect' message, say the user disconnected
   socket.on('disconnect', function() {
