@@ -30,6 +30,7 @@ var fs = require('fs')
 let memeMaker = require('meme-maker');
 var imageName = '';
 var path = require('path');
+var caption = require('caption')
 
 //---------------------- WEBAPP SERVER SETUP ---------------------------------//
 // use express to create the simple webapp
@@ -62,7 +63,7 @@ var opts = { //These Options define how the webcam is operated.
     saveShots: true,
     // [jpeg, png] support varies
     // Webcam.OutputTypes
-    output: "png",
+    output: "jpeg",
     //Which camera to use
     //Use Webcam.list() for results
     //false for default device
@@ -95,7 +96,7 @@ parser.on('data', function(data) {
   var imageName = new Date().toString().replace(/[&\/\\#,+()$~%.'":*?<>{}\s-]/g, '');
   console.log('making a making a picture at'+ imageName);
   NodeWebcam.capture('public/'+imageName, opts, function( err, data ) {
-  io.emit('newPicture',(imageName+'.png')); ///Lastly, the new name is send to the client web browser.
+  io.emit('newPicture',(imageName+'.jpg')); ///Lastly, the new name is send to the client web browser.
   /// The browser will take this new name and load the picture from the public folder.
   });
 
@@ -139,7 +140,7 @@ io.on('connect', function(socket) {
 
 
 
-    io.emit('newPicture',(imageName+'.png'));
+    io.emit('newPicture',(imageName+'.jpg'));
     });
 
     });
@@ -147,8 +148,8 @@ io.on('connect', function(socket) {
   socket.on('memeIt', function(){
     console.log('meme test');
 
-    originalFile = path.resolve('./public/'+imageName+'.png')
-    saveToFile = path.resolve('./public/'+imageName+'_resized.png')
+    originalFile = path.resolve('./public/'+imageName+'.jpg')
+    saveToFile = path.resolve('./public/'+imageName+'_resized.jpg')
 
     console.log(originalFile);
     console.log(saveToFile);
@@ -164,18 +165,12 @@ io.on('connect', function(socket) {
     //     }
     //   });
 
-      let options = {
-        image: originalFile,         // Required
-        outfile: saveToFile,  // Required
-        topText: 'TODAY IM',            // Required
-        bottomText: 'AN ASS',           // Optional
-      }
-
-      memeMaker(options, function(err) {
-        if(e) throw new Error(err)
-        io.emit('newPicture',imageName+'_resized.png');
-      });
-
+    caption.path(originalFile{
+      caption: 'Meme it.',
+      outputFile: saveToFile}
+      fuction(err,filename){
+        io.emit('newPicture',imageName+'_resized.jpg');
+    });
 
 
   });
