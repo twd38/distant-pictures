@@ -139,7 +139,7 @@ io.on('connect', function(socket) {
 
 
 
-    io.emit('newPicture',(imageName+'.jpg'));
+    io.emit('newPicture',(imageName+'.png'));
     });
 
     });
