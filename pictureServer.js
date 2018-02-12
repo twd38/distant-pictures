@@ -132,15 +132,18 @@ io.on('connect', function(socket) {
     //io.emit('newPicture',(imageName+'.jpg')); ///Lastly, the new name is send to the client web browser.
     /// The browser will take this new name and load the picture from the public folder.
 
-
-    gm('/public/'+imageName)
+    gm(imageName)
     .resize(100, 100)
     .noProfile()
-    .write('/public/'+imageName+'.png', function (err) {
-      if (!err) console.log('resized');
+    .write('/public/'+imageName+'2.jpg', function (err) {
+      if (!err) {
+        console.log('resized')
+        io.emit('newPicture',(/public/'+imageName+'2.jpg'));
+      };
     });
 
-    io.emit('newPicture',(imageName+'.jpg'));
+
+
 
 
     // let options = {
