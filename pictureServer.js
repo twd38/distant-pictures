@@ -124,7 +124,7 @@ io.on('connect', function(socket) {
     let memeMaker = require('meme-maker')
 
     let options = {
-      image: 'public/'+imageName+'.jpg',         // Required
+      image: 'public/'+imageName,         // Required
       outfile: 'public/'+imageName+'-meme.png',  // Required
       topText: 'TODAY IM',            // Required
       bottomText: 'AN ASS',           // Optional
