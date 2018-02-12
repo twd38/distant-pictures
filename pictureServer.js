@@ -164,7 +164,7 @@ io.on('connect', function(socket) {
     .write(saveToFile, function (err) {
       if (!err) console.log('resized');
       });
-    gm(saveToFile)  
+    console.log(saveToFile);  
     io.emit('newPicture',(imageName+'_resized.jpg'));
   });
 
