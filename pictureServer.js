@@ -24,7 +24,7 @@ var Readline = SerialPort.parsers.Readline; // read serial data as lines
 //-- Addition:
 var NodeWebcam = require( "node-webcam" );// load the webcam module
 var fs = require('fs')
-  , gm = require('gm');
+  , gm = require('gm').subClass({ imageMagick: true });
 let memeMaker = require('meme-maker');
 var imageName = '';
 var path = require('path');
@@ -147,7 +147,7 @@ io.on('connect', function(socket) {
     //   if(e) throw new Error(err)
     //   console.log('Image saved: ' + options.outfile)
     // });
-    io.emit('newPicture',(imageName+'.png'));
+    io.emit('newPicture',(imageName+'.jpg'));
     });
 
     });
@@ -155,8 +155,8 @@ io.on('connect', function(socket) {
   socket.on('memeIt', function(){
     console.log('meme test');
 
-    originalFile = path.resolve('./public/'+imageName+'.png')
-    saveToFile = path.resolve('./public/'+imageName+'_resized.png')
+    originalFile = path.resolve('./public/'+imageName+'.jpg')
+    saveToFile = path.resolve('./public/'+imageName+'_resized.jpg')
 
     console.log(originalFile);
     console.log(saveToFile);
