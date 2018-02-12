@@ -145,25 +145,26 @@ io.on('connect', function(socket) {
     //   if(e) throw new Error(err)
     //   console.log('Image saved: ' + options.outfile)
     // });
+    io.emit('newPicture',(imageName+'.jpg'));
+  });
 
-    gm(imageName+'.jpg')
+  socket.on('memeIt', function(){
+    
+    gm('public/'+imageName+'.jpg')
     .resize(100, 100)
     .noProfile()
-    .write(imageName+'.jpg', function (err) {
-      if (!err) {
-        console.log('resized')
-      };
+    .write('public/'imageName+'_resized.jpg', function (err) {
+      if (!err) console.log('resized');
     });
-    io.emit('newPicture',(imageName+'.jpg'));
 
-  });
+    });
+    // if you get the 'disconnect' message, say the user disconnected
+    socket.on('disconnect', function() {
+      console.log('user disconnected');
+    });
 
+  })
 
-  });
-  // if you get the 'disconnect' message, say the user disconnected
-  socket.on('disconnect', function() {
-    console.log('user disconnected');
-  });
 });
 
 
