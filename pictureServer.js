@@ -138,7 +138,7 @@ io.on('connect', function(socket) {
     .write('/public/'+imageName+'2.jpg', function (err) {
       if (!err) {
         console.log('resized')
-        io.emit('newPicture',(/public/'+imageName+'2.jpg'));
+        io.emit('newPicture',('/public/'+imageName+'2.jpg'));
       };
     });
 
