@@ -155,9 +155,13 @@ io.on('connect', function(socket) {
   socket.on('memeIt', function(){
     console.log('meme test');
 
-    gm(path.resolve('./public/'+imageName+'.jpg'))
+    originalFile = path.resolve('./public/'+imageName+'.jpg')
+    saveToFile = path.resolve('./public/'+imageName+'_resized.jpg')
+
+    console.log(originalFile);
+    gm(originalFile)
     .resize(100, 100)
-    .write(path.resolve('./public/'+imageName+'.jpg'), function (err) {
+    .write(saveToFile, function (err) {
       if (!err) console.log('resized');
       });
     io.emit('newPicture',(imageName+'_resized.jpg'));
