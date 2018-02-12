@@ -157,7 +157,7 @@ io.on('connect', function(socket) {
 
     gm(path.resolve('./public/'+imageName+'.jpg'))
     .resize(100, 100)
-    .write('./public/'+imageName+'_resized.jpg', function (err) {
+    .write(path.resolve('./public/'+imageName+'.jpg'), function (err) {
       if (!err) console.log('resized');
       });
     io.emit('newPicture',(imageName+'_resized.jpg'));
