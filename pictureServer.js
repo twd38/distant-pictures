@@ -62,7 +62,7 @@ var opts = { //These Options define how the webcam is operated.
     saveShots: true,
     // [jpeg, png] support varies
     // Webcam.OutputTypes
-    output: "jpeg",
+    output: "png",
     //Which camera to use
     //Use Webcam.list() for results
     //false for default device
@@ -147,8 +147,8 @@ io.on('connect', function(socket) {
   socket.on('memeIt', function(){
     console.log('meme test');
 
-    originalFile = path.resolve('./public/'+imageName+'.jpg')
-    saveToFile = path.resolve('./public/'+imageName+'_resized.jpg')
+    originalFile = path.resolve('./public/'+imageName+'.png')
+    saveToFile = path.resolve('./public/'+imageName+'_resized.png')
 
     console.log(originalFile);
     console.log(saveToFile);
@@ -173,7 +173,7 @@ io.on('connect', function(socket) {
 
       memeMaker(options, function(err) {
         if(e) throw new Error(err)
-        io.emit('newPicture',imageName+'_resized.jpg');
+        io.emit('newPicture',imageName+'_resized.png');
       });
 
 
