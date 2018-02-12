@@ -146,9 +146,9 @@ io.on('connect', function(socket) {
     //   console.log('Image saved: ' + options.outfile)
     // });
     io.emit('newPicture',(imageName+'.jpg'));
-  });
+    });
 
-  });
+    });
 
   socket.on('memeIt', function(){
     gm('public/'+imageName+'.jpg')
@@ -157,7 +157,7 @@ io.on('connect', function(socket) {
     .write('public/'imageName+'_resized.jpg', function (err) {
       if (!err) console.log('resized');
     });
-  })
+  });
 
   // if you get the 'disconnect' message, say the user disconnected
   socket.on('disconnect', function() {
