@@ -125,7 +125,7 @@ io.on('connect', function(socket) {
     var imageName = new Date().toString().replace(/[&\/\\#,+()$~%.'":*?<>{}\s-]/g, '');
 
 
-    console.log('making a making a picture at'+ imageName); // Second, the name is logged to the console.
+    console.log('making a making a picture at '+ imageName); // Second, the name is logged to the console.
 
     //Third, the picture is  taken and saved to the `public/`` folder
     NodeWebcam.capture('public/'+imageName, opts, function( err, data ) {
@@ -140,7 +140,7 @@ io.on('connect', function(socket) {
       if (!err) console.log('resized');
     });
 
-    io.emit('newPicture',(imageName+'.png'));
+    io.emit('newPicture',('/public'+imageName+'.png'));
 
 
     // let options = {
