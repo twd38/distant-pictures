@@ -71,6 +71,7 @@ var Webcam = NodeWebcam.create( opts ); //starting up the webcam
 
 
 
+
 //---------------------- SERIAL COMMUNICATION (Arduino) ----------------------//
 // start the serial port connection and read on newlines
 const serial = new SerialPort(process.argv[2], {});
@@ -133,4 +134,26 @@ io.on('connect', function(socket) {
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
+});
+
+
+//------------------------------Meme it up------------------------------------//
+let memeMaker = require('meme-maker')
+
+let options = {
+  image: 'public/'+imageName+'.jpg',         // Required
+  outfile: 'public/'+imageName+'-meme.png',  // Required
+  topText: 'TODAY IM',            // Required
+  bottomText: 'AN ASS',           // Optional
+  font: '/path/to/font.ttf',      // Optional
+  fontSize: 50,                   // Optional
+  fontFill: '#FFF',               // Optional
+  textPos: 'center',              // Optional
+  strokeColor: '#000',            // Optional
+  strokeWeight: 2                 // Optional
+}
+
+memeMaker(options, function(err) {
+  if(e) throw new Error(err)
+  console.log('Image saved: ' + options.outfile)
 });
