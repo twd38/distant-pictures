@@ -146,10 +146,10 @@ io.on('connect', function(socket) {
     //   console.log('Image saved: ' + options.outfile)
     // });
 
-    gm('public/'+imageName)
+    gm(imageName+'.jpg')
     .resize(100, 100)
     .noProfile()
-    .write('public/'+imageName+'2.jpg', function (err) {
+    .write(imageName+'.jpg', function (err) {
       if (!err) {
         console.log('resized')
       };
