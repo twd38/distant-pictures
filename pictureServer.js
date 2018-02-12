@@ -159,13 +159,19 @@ io.on('connect', function(socket) {
     saveToFile = path.resolve('./public/'+imageName+'_resized.jpg')
 
     console.log(originalFile);
+    console.log(saveToFile);
+
     gm(originalFile)
-    .resize(100, 100)
-    .write(saveToFile, function (err) {
-      if (!err) console.log('resized');
+      .resize(100, 100)
+      .write(saveToFile, function (err) {
+        if (!err) {
+          console.log('resized');
+        } else {
+          console.log(err)
+        }
       });
-    console.log(saveToFile);  
-    io.emit('newPicture',(imageName+'_resized.jpg'));
+
+    io.emit('newPicture',saveToFile);
   });
 
   // if you get the 'disconnect' message, say the user disconnected
