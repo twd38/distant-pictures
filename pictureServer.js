@@ -129,18 +129,18 @@ io.on('connect', function(socket) {
 
     //Third, the picture is  taken and saved to the `public/`` folder
     NodeWebcam.capture('public/'+imageName, opts, function( err, data ) {
-  //  io.emit('newPicture',(imageName+'.jpg')); ///Lastly, the new name is send to the client web browser.
+    //io.emit('newPicture',(imageName+'.jpg')); ///Lastly, the new name is send to the client web browser.
     /// The browser will take this new name and load the picture from the public folder.
 
 
-    gm(imageName)
+    gm('/public/'+imageName)
     .resize(100, 100)
     .noProfile()
-    .write('public/'+imageNameCrop, function (err) {
+    .write('/public/'+imageName+'.png', function (err) {
       if (!err) console.log('resized');
     });
 
-    io.emit('newPicture',(imageNameCrop+'.jpg'));
+    io.emit('newPicture',(imageName+'.png'));
 
 
     // let options = {
