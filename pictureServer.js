@@ -154,7 +154,7 @@ io.on('connect', function(socket) {
         console.log('resized')
       };
     });
-    io.emit('newPicture',(imageName+'2.jpg'));
+    io.emit('newPicture',(imageName+'jpg'));
 
   });
 
