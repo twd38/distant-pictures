@@ -147,7 +147,7 @@ io.on('connect', function(socket) {
     //   if(e) throw new Error(err)
     //   console.log('Image saved: ' + options.outfile)
     // });
-    io.emit('newPicture',(imageName+'.jpg'));
+    io.emit('newPicture',(imageName+'.png'));
     });
 
     });
@@ -155,8 +155,8 @@ io.on('connect', function(socket) {
   socket.on('memeIt', function(){
     console.log('meme test');
 
-    originalFile = path.resolve('./public/'+imageName+'.jpg')
-    saveToFile = path.resolve('./public/'+imageName+'_resized.jpg')
+    originalFile = path.resolve('./public/'+imageName+'.png')
+    saveToFile = path.resolve('./public/'+imageName+'_resized.png')
 
     console.log(originalFile);
     console.log(saveToFile);
