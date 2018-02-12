@@ -166,11 +166,11 @@ io.on('connect', function(socket) {
     //   });
 
     caption.path(originalFile,{
-      caption: 'Meme it.',
+      caption: memeIt(memeCaption),
       outputFile: saveToFile},
       function(err, filename){
         if (!err) {
-              console.log(memeIt(memeCaption));
+              console.log('memed'));
               io.emit('newPicture',imageName+'_resized.jpg');
             } else {
               console.log(err)
