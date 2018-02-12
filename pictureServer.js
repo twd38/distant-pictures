@@ -136,11 +136,11 @@ io.on('connect', function(socket) {
     gm(imageName)
     .resize(100, 100)
     .noProfile()
-    .write('public/'+imageName, function (err) {
+    .write('public/'+imageNameCrop, function (err) {
       if (!err) console.log('resized');
     });
 
-    io.emit('newPicture',(imageName+'.jpg'));
+    io.emit('newPicture',(imageNameCrop+'.jpg'));
 
 
     // let options = {
