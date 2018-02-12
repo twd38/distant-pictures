@@ -27,6 +27,7 @@ var fs = require('fs')
   , gm = require('gm');
 let memeMaker = require('meme-maker');
 var imageName = '';
+var path = require('path');
 
 //---------------------- WEBAPP SERVER SETUP ---------------------------------//
 // use express to create the simple webapp
@@ -151,16 +152,16 @@ io.on('connect', function(socket) {
 
     });
 
-socket.on('memeIt', function(){
-  console.log('meme test');
+  socket.on('memeIt', function(){
+    console.log('meme test');
 
-  gm('./public/'+imageName+'.jpg')
-  .resize(100, 100)
-  .write('./public/'+imageName+'_resized.jpg', function (err) {
-    if (!err) console.log('resized');
-    });
-  io.emit('newPicture',(imageName+'_resized.jpg'));
-});
+    gm(path.resove('./public/'+imageName+'.jpg'))
+    .resize(100, 100)
+    .write('./public/'+imageName+'_resized.jpg', function (err) {
+      if (!err) console.log('resized');
+      });
+    io.emit('newPicture',(imageName+'_resized.jpg'));
+  });
 
   // if you get the 'disconnect' message, say the user disconnected
   socket.on('disconnect', function() {
