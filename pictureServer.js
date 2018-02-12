@@ -132,27 +132,28 @@ io.on('connect', function(socket) {
     io.emit('newPicture',(imageName+'.jpg')); ///Lastly, the new name is send to the client web browser.
     /// The browser will take this new name and load the picture from the public folder.
 
-    //
-    // gm('/public/'+imageName)
-    // .resize(100, 100)
-    // .noProfile()
-    // .write('/public/'+imageName, function (err) {
-    //   if (!err) console.log('resized');
-    // });
 
-    let memeMaker = require('meme-maker')
-
-    let options = {
-      image: '/public/'+imageName,         // Required
-      outfile: '/public/'+imageName+'-meme.jpg',  // Required
-      topText: 'TODAY IM',            // Required
-      bottomText: 'AN ASS',           // Optional
-    }
-
-    memeMaker(options, function(err) {
-      if(e) throw new Error(err)
-      console.log('Image saved: ' + options.outfile)
+    gm('/public/'+imageName)
+    .resize(100, 100)
+    .noProfile()
+    .write('/public/'+imageName, function (err) {
+      if (!err) console.log('resized');
     });
+
+    io.emit('newPicture',(imageName+'.jpg'));
+
+
+    // let options = {
+    //   image: '/public/'+imageName,         // Required
+    //   outfile: '/public/'+imageName+'-meme.jpg',  // Required
+    //   topText: 'TODAY IM',            // Required
+    //   bottomText: 'AN ASS',           // Optional
+    // }
+    //
+    // memeMaker(options, function(err) {
+    //   if(e) throw new Error(err)
+    //   console.log('Image saved: ' + options.outfile)
+    // });
 
 
   });
