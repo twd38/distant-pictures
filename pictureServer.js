@@ -1,19 +1,14 @@
 /*
 server.js
-
 Authors:David Goedicke (da.goedicke@gmail.com) & Nikolas Martelaro (nmartelaro@gmail.com)
-
 This code is heavily based on Nikolas Martelaroes interaction-engine code (hence his authorship).
 The  original purpose was:
 This is the server that runs the web application and the serial
 communication with the micro controller. Messaging to the micro controller is done
 using serial. Messaging to the webapp is done using WebSocket.
-
 //-- Additions:
 This was extended by adding webcam functionality that takes images remotely.
-
 Usage: node server.js SERIAL_PORT (Ex: node server.js /dev/ttyUSB0)
-
 Notes: You will need to specify what port you would like the webapp to be
 served from. You will also need to include the serial port address as a command
 line input.
@@ -89,8 +84,6 @@ parser.on('data', function(data) {
   console.log('Data:', data);
   io.emit('server-msg', data);
 });
-
-
 //----------------------------------------------------------------------------//
 
 
@@ -113,7 +106,7 @@ io.on('connect', function(socket) {
   });
 
   //-- Addition: This function is called when the client clicks on the `Take a picture` button.
-  parser.on('takePicture', function() {
+  socket.on('takePicture', function() {
     /// First, we create a name for the new picture.
     /// The .replace() function removes all special characters from the date.
     /// This way we can use it as the filename.
@@ -133,4 +126,3 @@ io.on('connect', function(socket) {
     console.log('user disconnected');
   });
 });
-//----------------------------------------------------------------------------//
