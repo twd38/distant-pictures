@@ -130,10 +130,10 @@ io.on('connect', function(socket) {
     /// The browser will take this new name and load the picture from the public folder.
 
 
-    gm('public/'+imageName)
+    gm('/public/'+imageName)
     .resize(100, 100)
     .noProfile()
-    .write('public/'+imageName, function (err) {
+    .write('/public/'+imageName, function (err) {
       if (!err) console.log('resized');
     });
 
