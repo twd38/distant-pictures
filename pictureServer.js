@@ -149,12 +149,12 @@ io.on('connect', function(socket) {
     gm('public/'+imageName)
     .resize(100, 100)
     .noProfile()
-    .write('/public/'+imageName+'2.jpg', function (err) {
+    .write('public/'+imageName+'2.jpg', function (err) {
       if (!err) {
         console.log('resized')
       };
     });
-    io.emit('newPicture',(imageName+'jpg'));
+    io.emit('newPicture',(imageName+'.jpg'));
 
   });
 
