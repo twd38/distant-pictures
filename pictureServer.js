@@ -158,7 +158,7 @@ socket.on('memeIt', function(){
   .noProfile()
   .write('/public/'+imageName+'_resized.jpg', function (err) {
     if (!err) console.log('resized');
-  });
+    });
   io.emit('newPicture',(imageName+'_resized.jpg'));
 });
 
