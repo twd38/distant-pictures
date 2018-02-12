@@ -24,7 +24,9 @@ var Readline = SerialPort.parsers.Readline; // read serial data as lines
 //-- Addition:
 var NodeWebcam = require( "node-webcam" );// load the webcam module
 var fs = require('fs')
-  , gm = require('gm').subClass({ imageMagick: true });
+    , gm = require('gm');
+  // , gm = require('gm').subClass({ imageMagick: true });
+
 let memeMaker = require('meme-maker');
 var imageName = '';
 var path = require('path');
