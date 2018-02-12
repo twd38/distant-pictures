@@ -154,7 +154,7 @@ socket.on('memeIt', function(){
   gm('/public/'+imageName+'.jpg')
   .resize(100, 100)
   .noProfile()
-  .write('/public/'imageName+'_resized.jpg', function (err) {
+  .write('/public/'+imageName+'_resized.jpg', function (err) {
     if (!err) console.log('resized');
   });
 });
