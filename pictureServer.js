@@ -165,12 +165,12 @@ io.on('connect', function(socket) {
     //     }
     //   });
 
-    caption.path(originalFile{
+    caption.path(originalFile, {
       caption: 'Meme it.',
-      outputFile: saveToFile}
+      outputFile: saveToFile},
       fuction(err,filename){
         io.emit('newPicture',imageName+'_resized.jpg');
-    });
+      });
 
 
   });
