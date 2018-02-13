@@ -164,7 +164,6 @@ io.on('connect', function(socket) {
     //       console.log(err)
     //     }
     //   });
-    var memeCaption = memeIt();
 
     caption.path(originalFile,{
       caption: caption2Write,
