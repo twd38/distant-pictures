@@ -166,7 +166,7 @@ io.on('connect', function(socket) {
     //   });
 
     caption.path(originalFile,{
-      caption: memeIt(),
+      caption: 'memeIt()',
       outputFile: saveToFile},
       function(err, filename){
         if (!err) {
