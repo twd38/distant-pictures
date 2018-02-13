@@ -30,7 +30,7 @@ function takePicture() {
 }
 
 function memeIt() {
-  socket.emit('memeIt');
+  socket.emit('memeIt', document.getElementById('memeCaption').value);
 }
 
 

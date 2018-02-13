@@ -145,7 +145,7 @@ io.on('connect', function(socket) {
 
     });
 
-  socket.on('memeIt', function(memeCaption){
+  socket.on('memeIt', function(caption2Write){
     console.log('meme test');
 
     originalFile = path.resolve('./public/'+imageName+'.jpg')
@@ -164,9 +164,10 @@ io.on('connect', function(socket) {
     //       console.log(err)
     //     }
     //   });
+    var memeCaption = memeIt();
 
     caption.path(originalFile,{
-      caption: 'memeIt()',
+      caption: caption2Write,
       outputFile: saveToFile},
       function(err, filename){
         if (!err) {
