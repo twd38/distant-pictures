@@ -166,7 +166,7 @@ io.on('connect', function(socket) {
     //   });
 
     caption.path(originalFile,{
-      caption: caption2Write,
+      caption: caption2Write.toString(),
       outputFile: saveToFile},
       function(err, filename){
         if (!err) {
