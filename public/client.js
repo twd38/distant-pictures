@@ -29,7 +29,7 @@ function takePicture() {
   socket.emit('takePicture');
 }
 
-function memeIt(memeCaption) {
+function memeIt() {
   socket.emit('memeIt');
 }
 
